@@ -1,0 +1,179 @@
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+
+namespace CalculadoraHeuristica
+{
+    public partial class Form1 : Form
+    {
+
+        public double val1;
+        public double val2;
+        public string sign;
+        public string elim;
+        public Form1()
+        {
+            InitializeComponent();
+            cajaN.Visible = false;
+            this.Text = "Calculadora";
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            agr(1);
+            
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            agr(2);
+        }
+        private void button3_Click(object sender, EventArgs e)
+        {
+            agr(3);
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            agr(4);
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            agr(5);
+        }
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+            agr(6);
+        }
+        private void button7_Click(object sender, EventArgs e)
+        {
+            agr(7);
+        }
+        private void button8_Click(object sender, EventArgs e)
+        {
+            agr(8);
+        }
+
+        private void button9_Click(object sender, EventArgs e)
+        {
+            agr(9);
+        }
+        private void button0_Click(object sender, EventArgs e)
+        {
+            agr(0);
+        }
+
+
+
+        private void buttonPoint_Click(object sender, EventArgs e)
+        {
+            if (caja.Text.Contains('.') == false)
+            {
+                if (caja.Text != "")
+                {
+                    caja.Text = caja.Text + ".";
+                }
+            }
+        }
+
+        private void buttonPlus_Click(object sender, EventArgs e)
+        {
+            val1 = Convert.ToDouble(caja.Text);
+            sign = "+";
+            cajaN.Visible = true;
+            cajaN.Text = caja.Text + " +";
+            limpiar();
+        }
+
+        private void buttonLess_Click(object sender, EventArgs e)
+        {
+            val1 = Convert.ToDouble(caja.Text);
+            sign = "-";
+            cajaN.Visible = true;
+            cajaN.Text = caja.Text + " -";
+            limpiar();
+        }
+
+        private void buttonMult_Click(object sender, EventArgs e)
+        {
+            val1 = Convert.ToDouble(caja.Text);
+            sign = "*";
+            cajaN.Visible = true;
+            cajaN.Text = caja.Text + " *";
+            limpiar();
+        }
+
+        private void buttonDiv_Click(object sender, EventArgs e)
+        {
+            val1 = Convert.ToDouble(caja.Text);
+            sign = "/";
+            cajaN.Visible = true;
+            cajaN.Text = caja.Text + " /";
+            limpiar();
+        }
+
+        private void buttonAC_Click(object sender, EventArgs e)
+        {
+            caja.Clear();
+        }
+
+        private void buttonC_Click(object sender, EventArgs e)
+        {
+            int dato = caja.TextLength;
+            int dato1 = dato;
+            if (dato1 == 0 ) { 
+
+            }
+            else { caja.Text = caja.Text.Substring(0, caja.Text.Count() - 1);}
+            
+        }
+        private void buttonEqual_Click(object sender, EventArgs e)
+        {
+            val2 = Convert.ToDouble(caja.Text);
+            if(sign == "+")
+            {
+                caja.Text = Convert.ToString(val1 + val2);
+            }
+            if (sign == "-")
+            {
+                caja.Text = Convert.ToString(val1 - val2);
+            }
+            if (sign == "*")
+            {
+                caja.Text = Convert.ToString(val1 * val2);
+            }
+            if (sign == "/")
+            {
+                caja.Text = Convert.ToString(val1 / val2);
+            }
+            cajaN.Visible = false;
+            cajaN.Text = "";
+        }
+        public void agr(int num)
+        {
+            if (caja.Text == "")
+            {
+                caja.Text = num.ToString();
+            }
+            else
+            {
+                caja.Text = caja.Text + num.ToString();
+            }
+        }
+
+        public void limpiar()
+        {
+            caja.Clear();
+            caja.Focus();
+        }
+        
+    }
+}
